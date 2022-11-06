@@ -4,8 +4,7 @@
     "strict": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
-    "module": "CommonJS",
+    "module": "ES6",
     "types": ["@citizenfx/client", "@types/node"],
     "lib": ["ES2020"]
   },
