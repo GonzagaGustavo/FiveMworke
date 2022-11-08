@@ -1,0 +1,32 @@
+{
+  "name": "Gonzaga-FiveMwork",
+  "version": "0.0.1",
+  "description": "A TypeScript FiveM Framework",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GonzagaGustavo/Gonzaga-FiveMwork.git",
+    "directory": "lib"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/GonzagaGustavo/Gonzaga-FiveMwork/issues"
+  },
+  "author": "Gustavo Gonzaga",
+  "license": "MIT",
+  "files": ["bin", "scripts"],
+  "bin": {
+    "Gonzaga-FiveMwork": "./bin"
+  },
+  "scripts": {
+    "dev": "yarn Gonzaga-FiveMwork"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.13"
+  },
+  "dependencies": {
+    "glob": "^8.0.3"
+  }
+}

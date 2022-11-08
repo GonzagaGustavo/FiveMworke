@@ -5,9 +5,10 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "module": "ES6",
-    "types": ["@citizenfx/client", "@types/node"],
-    "lib": ["ES2020"]
+    "types": ["@citizenfx/client", "@citizenfx/server", "@types/node"],
+    "lib": ["ES2020"],
+    "baseUrl": "."
   },
-  "include": ["src/*/client/**/*.ts"],
+  "include": ["src/*/**/*.ts"],
   "exclude": ["node_modules"]
 }
