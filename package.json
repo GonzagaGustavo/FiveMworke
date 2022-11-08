@@ -8,18 +8,17 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "webpack --config ./lib/webpack.config.js --mode development",
+    "dev": "gonzaga-fivemwork",
     "build": "webpack --mode production"
   },
   "devDependencies": {
     "@citizenfx/client": "^2.0.5990-1",
+    "@citizenfx/server": "^2.0.5999-1",
     "@types/node": "^18.11.9",
-    "esbuild": "^0.15.13",
-    "ts-loader": "^9.4.1",
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "@citizenfx/server": "^2.0.5994-1",
-    "glob": "^8.0.3"
+    "esbuild": "^0.15.13",
+    "gonzaga-fivemwork": "^0.0.11"
   }
 }
