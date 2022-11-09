@@ -19,6 +19,6 @@
   },
   "dependencies": {
     "esbuild": "^0.15.13",
-    "gonzaga-fivemwork": "^0.0.11"
+    "gonzaga-fivemwork": "^0.0.14"
   }
 }

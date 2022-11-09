@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+process.on('unhandledRejection', err => {
+    throw err;
+  });
+const FiveMwork = require('../FiveMwork.js')
+
+const fiveM = new FiveMwork()
+fiveM.makeMagic()

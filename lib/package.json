@@ -1,6 +1,6 @@
 {
   "name": "gonzaga-fivemwork",
-  "version": "0.0.1",
+  "version": "0.0.15",
   "description": "A TypeScript FiveM Framework",
   "main": "index.js",
   "repository": {
@@ -18,10 +18,7 @@
   "license": "MIT",
   "files": ["bin", "FiveMwork.js"],
   "bin": {
-    "Gonzaga-FiveMwork": "./bin/index.js"
-  },
-  "scripts": {
-    "dev": "yarn Gonzaga-FiveMwork"
+    "gonzaga-fivemwork": "./bin/index"
   },
   "devDependencies": {
     "esbuild": "^0.15.13"
