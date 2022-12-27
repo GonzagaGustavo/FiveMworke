@@ -16,7 +16,10 @@
   },
   "author": "gustavogonzaga",
   "license": "MIT",
-  "files": ["bin", "FiveMwork.js"],
+  "files": [
+    "bin",
+    "FiveMwork.js"
+  ],
   "bin": {
     "gonzaga-fivemwork": "./bin/index"
   },
@@ -24,6 +27,7 @@
     "esbuild": "^0.15.13"
   },
   "dependencies": {
-    "glob": "^8.0.3"
+    "glob": "^8.0.3",
+    "ncp": "^2.0.0"
   }
 }
