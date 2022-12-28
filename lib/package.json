@@ -1,6 +1,6 @@
 {
   "name": "fivemworke",
-  "version": "1.1.0",
+  "version": "1.7.2",
   "description": "A TypeScript FiveM Framework",
   "main": "index.js",
   "repository": {
@@ -23,12 +23,12 @@
     "helpers/promises.js"
   ],
   "bin": {
-    "fivemwork": "./bin/index"
+    "fivemwork": "./bin/index.js"
   },
   "devDependencies": {},
   "dependencies": {
+    "esbuild": "^0.15.13",
     "glob": "^8.0.3",
-    "ncp": "^2.0.0",
-    "esbuild": "^0.15.13"
+    "ncp": "^2.0.0"
   }
 }

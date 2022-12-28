@@ -167,10 +167,10 @@ esbuild@^0.15.13:
     esbuild-windows-64 "0.15.18"
     esbuild-windows-arm64 "0.15.18"
 
-fivemworke@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/fivemworke/-/fivemworke-1.1.0.tgz#debcdf3d519de34e5ae27c98a8b7070d867aef4b"
-  integrity sha512-zr/yNe7NZkz5Zr8VRJEGDcRvKj+IB5rCNDWl1mhAwtSid/DHyIncx/nBce+lhV0oFc9noNTg9469YUJyLO0sKg==
+fivemworke@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/fivemworke/-/fivemworke-1.7.1.tgz#55d428a2da41d56a9bcecbe56fc8ae1ef585c82a"
+  integrity sha512-FGmN1LsoiHiAimpw+20nv5KoIdfowd+2FYVx5VCM6QsAH4VDW5VXI4V9yxOqSDVnJyWNJzfl9xkvLK99+PseUg==
   dependencies:
     esbuild "^0.15.13"
     glob "^8.0.3"

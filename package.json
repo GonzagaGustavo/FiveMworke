@@ -17,6 +17,6 @@
     "typescript": "^4.8.4"
   },
   "dependencies": {
-    "fivemworke": "^1.1.0"
+    "fivemworke": "^1.7.1"
   }
 }
