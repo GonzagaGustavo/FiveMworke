@@ -2,6 +2,7 @@
 
 ## The first FiveM TypeScript Framework
 
-- [ ] System Files to generate fxmanifest.lua
-- [ ] Compile ts to /resources and watch files
-- [ ] React
+- [x] System Files to generate fxmanifest.lua
+- [x] Compile ts to /resources
+- [x] React
+- [ ] Gerar o fxmanifest.lua por ultimo e adionar uipage apenas se existir
