@@ -1,4 +1,4 @@
-# GONZAGA FiveMwork
+# FiveMworke
 
 ## The first FiveM TypeScript Framework
 
