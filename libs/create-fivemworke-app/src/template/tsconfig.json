@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "module": "ES6",
+    "types": ["@citizenfx/client", "@citizenfx/server", "@types/node"],
+    "lib": ["ES2020"],
+    "baseUrl": "."
+  },
+  "include": ["src/*/**/*.ts"],
+  "exclude": ["node_modules"]
+}
