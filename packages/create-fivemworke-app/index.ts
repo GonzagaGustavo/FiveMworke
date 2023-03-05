@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 import chalk from "chalk";
 import { Command } from "commander";
 import * as path from "path";
@@ -7,7 +8,7 @@ import * as fs from "fs-extra";
 import { exec } from "child_process";
 import { ncp } from "ncp";
 
-export default async function main() {
+async function main() {
   let projectPath: string = "";
 
   const program = new Command(packageJsonLib.name)
@@ -33,22 +34,26 @@ export default async function main() {
       build: "fivemworke",
     },
   };
+  console.log(path.join(root, "/package.json"));
   fs.writeFileSync(
     path.join(root, "package.json"),
     JSON.stringify(packageJson, null, 2)
   );
 
-  await install();
+  //   await install(undefined, root);
   template(root);
 }
 main();
 
-async function install(packageManager: string = "yarn") {
+async function install(packageManager: string = "yarn", root: string) {
   const packages = new Promise((resolve, reject) => {
     const packagesToAdd = ["fivemworke", "@types/node", "typescript"];
 
     const installer = exec(
-      packageManager + " add" + packagesToAdd.map((pkg) => `${pkg} `)
+      `cd ${root} && ` +
+        packageManager +
+        " add" +
+        packagesToAdd.map((pkg) => `${pkg} `)
     );
     installer.addListener("error", reject);
     installer.addListener("exit", resolve);
