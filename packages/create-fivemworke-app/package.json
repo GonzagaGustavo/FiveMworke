@@ -1,5 +1,5 @@
 {
-  "name": "create-fivemworke-app-test",
+  "name": "create-fivemworke-app",
   "version": "0.1.1",
   "main": "index.js",
   "author": "gustavogonzaga",
@@ -21,7 +21,6 @@
     "@types/fs-extra": "^11.0.1",
     "@types/ncp": "^2.0.5",
     "@types/node": "^18.14.6",
-    "@vercel/ncc": "^0.36.1",
     "esbuild": "^0.17.11",
     "typescript": "^4.9.5"
   },
