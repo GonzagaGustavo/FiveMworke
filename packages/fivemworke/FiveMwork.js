@@ -117,13 +117,11 @@ class FiveMwork {
 
         await promiseFromChildProcess(reactBuild);
 
-        reactBuild.on("close", () => {
-          // copiar pasta build para resources cms
-          ncp(`${base}/dist`, this.outputDir + paths[i] + "/cms", (err) => {
-            if (err) {
-              return console.error(err);
-            }
-          });
+        // copiar pasta build para resources cms
+        ncp(`${base}/dist`, this.outputDir + paths[i] + "/cms", (err) => {
+          if (err) {
+            return console.error(err);
+          }
         });
 
         this.generateManifest(true, paths[i]);
@@ -136,7 +134,7 @@ class FiveMwork {
       this.outputDir + resource + "/fxmanifest.lua",
       `fx_version 'bodacious'\r\n game 'gta5'\r\n author 'Gustavo Gonzaga'\r\n description 'Gonzaga resource'\r\n version '0.0.1'\r\n ${
         cms ? "ui_page 'cms/index.html'" : null
-      }\r\n files {\r\n 'cms/*',\r\n 'cms/static/css/*.css',\r\n 'cms/static/js/*.js',\r\n 'cms/static/media/*' }\r\n client_script 'client/**/*.js'\r\n server_script 'server/**/*.js'\r\n`,
+      }\r\n files {\r\n 'cms/index.html',\r\n 'cms/**/*'\r\n }\r\n client_script 'client/**/*.js'\r\n server_script 'server/**/*.js'\r\n`,
       (err) => {
         if (err) console.error(err);
       }
