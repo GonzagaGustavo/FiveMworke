@@ -1,6 +1,6 @@
 {
   "name": "fivemworke",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "description": "A TypeScript FiveM Framework",
   "main": "FiveMwork.js",
   "repository": {
@@ -21,6 +21,7 @@
     "FiveMwork.js",
     "helpers/get-pkg-manager.js",
     "helpers/promises.js",
+    "helpers/copy-dir.js",
     "README.md"
   ],
   "bin": {
@@ -30,7 +31,6 @@
   "dependencies": {
     "esbuild": "^0.15.13",
     "fs-extra": "^11.1.0",
-    "glob": "^8.0.3",
-    "ncp": "^2.0.0"
+    "glob": "^8.0.3"
   }
 }

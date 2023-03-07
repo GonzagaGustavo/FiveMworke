@@ -7,7 +7,7 @@ const { resolve } = require("path");
 const promiseFromChildProcess = require("./helpers/promises");
 const copyDir = require("./helpers/copy-dir");
 const path = require("path");
-const ncp = require("ncp").ncp;
+const os = require("os");
 
 class FiveMwork {
   outputDir = __dirname + "/../../../resources/";
@@ -128,21 +128,45 @@ class FiveMwork {
         // copiar pasta build para resources cms
         await copyDir(`${base}/dist`, this.outputDir + paths[i] + "/cms");
 
-        const filesCms = glob.sync(
-          `${path.resolve(base)}/dist/**/*`.replace(/\\/g, "/")
-        );
-        console.log(filesCms);
         this.generateManifest(true, paths[i]);
       }
     }
   }
 
   generateManifest(cms, resource) {
+    const resolvedCmsBuildPath = path
+      .resolve(this.outputDir + resource)
+      .replace(/\\/g, "/");
+
+    const pathCms = glob.sync(
+      `${path.resolve(this.outputDir + resource + "/cms")}/**/*`.replace(
+        /\\/g,
+        "/"
+      )
+    );
+
+    const cmsFiles = pathCms.map((filePath) => {
+      const removedBase = filePath.replace(resolvedCmsBuildPath, "");
+      return removedBase.substring(1, removedBase.length);
+    });
+    cmsFiles.shift();
+
+    const manifest = `fx_version 'bodacious'
+game 'gta5'
+author ''
+description '${resource} resource'
+version '1.0.0'
+${cms ? `ui_page 'cms/index.html'` : null}
+files {
+${cmsFiles.map((file) => `'${file}',`).join(os.EOL)}
+}
+client_script 'client/**/*.js'
+server_script 'server/**/*.js'
+`;
+
     fs.writeFile(
       this.outputDir + resource + "/fxmanifest.lua",
-      `fx_version 'bodacious'\r\n game 'gta5'\r\n author 'Gustavo Gonzaga'\r\n description 'Gonzaga resource'\r\n version '0.0.1'\r\n ${
-        cms ? "ui_page 'cms/index.html'" : null
-      }\r\n files {\r\n 'cms/**/*',\r\n 'cms/assets/*.js',\r\n 'cms/assets/*.css'\r\n }\r\n client_script 'client/**/*.js'\r\n server_script 'server/**/*.js'\r\n`,
+      manifest,
       (err) => {
         if (err) console.error(err);
       }
