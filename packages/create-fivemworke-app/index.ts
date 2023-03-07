@@ -6,43 +6,7 @@ import * as path from "path";
 import packageJsonLib from "./package.json";
 import * as fs from "fs-extra";
 import { ChildProcess, exec } from "child_process";
-import { ncp } from "ncp";
 import os from "os";
-
-// async function install(packageManager: string = "yarn", root: string) {
-//   const packages = () =>
-//     new Promise((resolve, reject) => {
-//       const packagesToAdd = ["fivemworke", "@types/node", "typescript"];
-
-//       const installer = exec(
-//         `cd ${root} && ` +
-//           packageManager +
-//           " add" +
-//           packagesToAdd.map((pkg) => `${pkg} `)
-//       );
-//       installer.addListener("error", reject);
-//       installer.addListener("exit", resolve);
-//     });
-
-//   const devPackages = () =>
-//     new Promise((resolve, reject) => {
-//       const devPackagesToAdd = ["@citizenfx/client", "@citizenfx/server"];
-
-//       const installer = exec(
-//         `cd ${root} && ` +
-//           packageManager +
-//           " add -D " +
-//           devPackagesToAdd.map((pkg) => ` ${pkg}`)
-//       );
-//       installer.addListener("error", reject);
-//       installer.addListener("exit", resolve);
-//     });
-
-//   console.log("Installing the packages...");
-
-//   await packages();
-//   await devPackages();
-// }
 
 async function install(packageManager: string = "yarn", root: string) {
   const packagesToAdd = ["fivemworke", "@types/node", "typescript"];
@@ -70,7 +34,7 @@ function promiseFromChildProcess(child: ChildProcess) {
 }
 
 function template(root: string) {
-  ncp(`${__dirname}/src/template`, root, (err) =>
+  fs.copy(`${__dirname}/src/template`, root, (err) =>
     err ? console.log(err) : null
   );
 }
