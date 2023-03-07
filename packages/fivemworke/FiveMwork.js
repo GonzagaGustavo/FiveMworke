@@ -5,6 +5,8 @@ const { exec } = require("child_process");
 const getPkgManager = require("./helpers/get-pkg-manager");
 const { resolve } = require("path");
 const promiseFromChildProcess = require("./helpers/promises");
+const copyDir = require("./helpers/copy-dir");
+const path = require("path");
 const ncp = require("ncp").ncp;
 
 class FiveMwork {
@@ -108,22 +110,28 @@ class FiveMwork {
           `cd "${resolve(base)}" && ${packageManager} run build`,
           (err, stdout, stderr) => {
             if (err) {
-              console.error(err);
-            } else if (stderr) {
-              console.error("stderr", stderr);
+              console.error(`error: ${err.message}`);
+              return;
+            }
+
+            if (stderr) {
+              console.error(`stderr: ${stderr}`);
+              return;
             }
           }
         );
 
+        reactBuild.stdout.on("data", (data) => console.log(data.toString()));
+
         await promiseFromChildProcess(reactBuild);
 
         // copiar pasta build para resources cms
-        ncp(`${base}/dist`, this.outputDir + paths[i] + "/cms", (err) => {
-          if (err) {
-            return console.error(err);
-          }
-        });
+        await copyDir(`${base}/dist`, this.outputDir + paths[i] + "/cms");
 
+        const filesCms = glob.sync(
+          `${path.resolve(base)}/dist/**/*`.replace(/\\/g, "/")
+        );
+        console.log(filesCms);
         this.generateManifest(true, paths[i]);
       }
     }
@@ -134,7 +142,7 @@ class FiveMwork {
       this.outputDir + resource + "/fxmanifest.lua",
       `fx_version 'bodacious'\r\n game 'gta5'\r\n author 'Gustavo Gonzaga'\r\n description 'Gonzaga resource'\r\n version '0.0.1'\r\n ${
         cms ? "ui_page 'cms/index.html'" : null
-      }\r\n files {\r\n 'cms/index.html',\r\n 'cms/**/*'\r\n }\r\n client_script 'client/**/*.js'\r\n server_script 'server/**/*.js'\r\n`,
+      }\r\n files {\r\n 'cms/**/*',\r\n 'cms/assets/*.js',\r\n 'cms/assets/*.css'\r\n }\r\n client_script 'client/**/*.js'\r\n server_script 'server/**/*.js'\r\n`,
       (err) => {
         if (err) console.error(err);
       }

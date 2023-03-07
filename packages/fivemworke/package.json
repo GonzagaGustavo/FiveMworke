@@ -29,6 +29,7 @@
   "devDependencies": {},
   "dependencies": {
     "esbuild": "^0.15.13",
+    "fs-extra": "^11.1.0",
     "glob": "^8.0.3",
     "ncp": "^2.0.0"
   }
