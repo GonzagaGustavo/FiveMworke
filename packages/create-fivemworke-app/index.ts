@@ -33,10 +33,28 @@ function promiseFromChildProcess(child: ChildProcess) {
   });
 }
 
-function template(root: string) {
-  fs.copy(`${__dirname}/src/template`, root, (err) =>
-    err ? console.log(err) : null
+async function template(root: string) {
+  await fs.copy(`${__dirname}/src/template`, root).catch((err) => {
+    if (err) console.log(err);
+  });
+}
+async function reactWithVite(packageManager: string = "npm", root: string) {
+  console.log(
+    chalk.greenBright("Installing react with ") +
+      chalk.blueBright("Vite") +
+      chalk.greenBright(" template")
   );
+
+  const cmd = exec(
+    `cd "${path.resolve(
+      root + "/src/resource"
+    )}" && ${packageManager} create vite cms -- --template react-ts`,
+    (err) => {
+      if (err) console.log(err);
+    }
+  );
+
+  await promiseFromChildProcess(cmd);
 }
 
 async function main() {
@@ -75,7 +93,8 @@ async function main() {
   );
 
   await install(undefined, root);
-  template(root);
+  await template(root);
+  await reactWithVite(undefined, root);
 
   console.log(chalk.green("Project created!"));
 }
