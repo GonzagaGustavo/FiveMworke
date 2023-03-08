@@ -32,5 +32,10 @@
     "esbuild": "^0.15.13",
     "fs-extra": "^11.1.0",
     "glob": "^8.0.3"
-  }
+  },
+  "keywords": [
+    "framework",
+    "fivem",
+    "typescript"
+  ]
 }
