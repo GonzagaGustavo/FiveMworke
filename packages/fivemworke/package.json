@@ -1,6 +1,6 @@
 {
   "name": "fivemworke",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A TypeScript FiveM Framework",
   "main": "FiveMwork.js",
   "repository": {
@@ -25,7 +25,7 @@
     "README.md"
   ],
   "bin": {
-    "fivemwork": "./bin/index.js"
+    "fivemworke": "./bin/index.js"
   },
   "devDependencies": {},
   "dependencies": {

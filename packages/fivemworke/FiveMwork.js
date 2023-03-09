@@ -175,18 +175,30 @@ server_script 'server/**/*.js'
 
   startResources(pathsR) {
     let newResources = [];
+    let resourcesFile = "";
 
-    const resourcesFile = fs.readFileSync(
-      this.outputDir + "/../resources.cfg",
-      "utf8"
+    const resourceConfigExists = fs.existsSync(
+      this.outputDir + "/../resources.cfg"
     );
-    const resources = resourcesFile.split("start");
-    pathsR.forEach((p) => {
-      const a = resources.find((r) => r.trim() == p);
-      if (!a) {
+
+    if (resourceConfigExists) {
+      resourcesFile = fs.readFileSync(
+        this.outputDir + "/../resources.cfg",
+        "utf8"
+      );
+      const resources = resourcesFile.split("start");
+      pathsR.forEach((p) => {
+        const a = resources.find((r) => r.trim() == p);
+        if (!a) {
+          newResources.push(p);
+        }
+      });
+    } else {
+      pathsR.forEach((p) => {
         newResources.push(p);
-      }
-    });
+      });
+    }
+
     if (newResources.length > 0) {
       fs.writeFile(
         this.outputDir + "../resources.cfg",
