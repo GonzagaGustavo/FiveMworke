@@ -1,7 +1,7 @@
 {
   "name": "fivemworke",
-  "version": "0.1.8",
-  "description": "A TypeScript FiveM Framework",
+  "version": "0.1.81",
+  "description": "The TypeScript FiveM Framework",
   "main": "FiveMwork.js",
   "repository": {
     "type": "git",
@@ -21,17 +21,16 @@
     "FiveMwork.js",
     "helpers/get-pkg-manager.js",
     "helpers/promises.js",
-    "helpers/copy-dir.js",
-    "README.md"
+    "helpers/copy-dir.js"
   ],
   "bin": {
     "fivemworke": "./bin/index.js"
   },
   "devDependencies": {},
   "dependencies": {
-    "esbuild": "^0.15.13",
+    "esbuild": "^0.17.11",
     "fs-extra": "^11.1.0",
-    "glob": "^8.0.3"
+    "glob": "^9.3.0"
   },
   "keywords": [
     "framework",

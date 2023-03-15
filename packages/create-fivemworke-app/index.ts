@@ -7,10 +7,7 @@ import packageJsonLib from "./package.json";
 import * as fs from "fs-extra";
 import { ChildProcess, exec } from "child_process";
 import os from "os";
-import {
-  getPackageManager,
-  PackageManager,
-} from "./src/utils/get-package-manager";
+import { getPackageManager, PackageManager } from "./utils/get-package-manager";
 
 async function install(packageManager: PackageManager, root: string) {
   const packagesToAdd = ["fivemworke", "@types/node", "typescript"];

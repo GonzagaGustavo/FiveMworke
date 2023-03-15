@@ -1,0 +1,8 @@
+# .npmignore
+
+/tsconfig.json
+/yarn.lock
+/README.md
+/index.ts
+/.gitIgnore
+/utils

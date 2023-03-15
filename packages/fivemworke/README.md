@@ -20,7 +20,7 @@
   |         └── resource-name
   |                       └── client
   |                       └── server
-  |                       └── cms
+  |                       └── nui
   ├── resources
   ├── start.bat
 ```
@@ -28,13 +28,13 @@
 4. The name of the folder `resource-name`, will be the name of the resource.
 5. The client folder will contain all the files with the client scripts, which when compiled with the build command will be transformed into a single file.
 6. Same thing for server folder
-7. The cms folder will contain the nui of the resource.
+7. The nui folder will contain the nui of the resource.
 
 ## How it works?
 
 <p>To compile the project execute the `build` command of app.<br />
 Fivemworke compiles the client and server script using esbuild and moves the compiled files to the resources folder.<br />
-In the cms folder, the `build` command is executed, which creates the build of react, vite, vue, etc... and copies the build files to the resources folder.<br />
+In the nui folder, the `build` command is executed, which creates the build of react, vite, vue, etc... and copies the build files to the resources folder.<br />
 Lastly fivemworke generates the fxmanifest.lua for each resource and configures the client_script, server_script and ui_page.
 And the only thing you will need to do is restart the resources and see the change on your server
 </p>
