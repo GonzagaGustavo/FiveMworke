@@ -1,6 +1,6 @@
 {
   "name": "fivemworke",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "A TypeScript FiveM Framework",
   "main": "FiveMwork.js",
   "repository": {

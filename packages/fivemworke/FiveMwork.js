@@ -101,10 +101,10 @@ class FiveMwork {
 
   async generateCmsBundle(paths) {
     for (let i = 0; i < paths.length; i++) {
-      const base = `${this.baseDir}/src/${paths[i]}/cms`;
+      const base = `${this.baseDir}/src/${paths[i]}/nui`;
       if (fs.existsSync(base)) {
         const packageManager = getPkgManager(base);
-        fs.rmdir(this.outputDir + paths[i] + "/cms", (err) => {});
+        fs.rmdir(this.outputDir + paths[i] + "/nui", (err) => {});
         fs.mkdir(base, (err) => {});
         const reactBuild = exec(
           `cd "${resolve(base)}" && ${packageManager} run build`,
@@ -126,9 +126,11 @@ class FiveMwork {
         await promiseFromChildProcess(reactBuild);
 
         // copiar pasta build para resources cms
-        await copyDir(`${base}/dist`, this.outputDir + paths[i] + "/cms");
+        await copyDir(`${base}/dist`, this.outputDir + paths[i] + "/nui");
 
         this.generateManifest(true, paths[i]);
+      } else {
+        this.generateManifest(false, paths[i]);
       }
     }
   }
@@ -139,7 +141,7 @@ class FiveMwork {
       .replace(/\\/g, "/");
 
     const pathCms = glob.sync(
-      `${path.resolve(this.outputDir + resource + "/cms")}/**/*`.replace(
+      `${path.resolve(this.outputDir + resource + "/nui")}/**/*`.replace(
         /\\/g,
         "/"
       )
@@ -156,7 +158,7 @@ game 'gta5'
 author ''
 description '${resource} resource'
 version '1.0.0'
-${cms ? `ui_page 'cms/index.html'` : null}
+${cms ? `ui_page 'nui/index.html'` : ""}
 files {
 ${cmsFiles.map((file) => `'${file}',`).join(os.EOL)}
 }

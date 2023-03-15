@@ -7,8 +7,12 @@ import packageJsonLib from "./package.json";
 import * as fs from "fs-extra";
 import { ChildProcess, exec } from "child_process";
 import os from "os";
+import {
+  getPackageManager,
+  PackageManager,
+} from "./src/utils/get-package-manager";
 
-async function install(packageManager: string = "yarn", root: string) {
+async function install(packageManager: PackageManager, root: string) {
   const packagesToAdd = ["fivemworke", "@types/node", "typescript"];
   const devPackagesToAdd = ["@citizenfx/client", "@citizenfx/server"];
 
@@ -38,7 +42,7 @@ async function template(root: string) {
     if (err) console.log(err);
   });
 }
-async function reactWithVite(packageManager: string = "npm", root: string) {
+async function reactWithVite(packageManager: PackageManager, root: string) {
   console.log(
     chalk.greenBright("Installing react with ") +
       chalk.blueBright("Vite") +
@@ -48,11 +52,13 @@ async function reactWithVite(packageManager: string = "npm", root: string) {
   const cmd = exec(
     `cd "${path.resolve(
       root + "/src/resource"
-    )}" && ${packageManager} create vite cms -- --template react-ts`,
+    )}" && npm create vite nui -- --template react-ts && cd nui && ${packageManager} install`,
     (err) => {
       if (err) console.log(err);
     }
   );
+
+  cmd.stdout?.on("data", (data) => console.log(data.toString()));
 
   await promiseFromChildProcess(cmd);
 }
@@ -71,6 +77,7 @@ async function main() {
     })
     .parse(process.argv);
 
+  const packageManager = getPackageManager();
   const originalDirectory = process.cwd();
   const root = path.join(originalDirectory, projectPath);
   const appName = path.basename(root);
@@ -92,9 +99,9 @@ async function main() {
     JSON.stringify(packageJson, null, 2) + os.EOL
   );
 
-  await install(undefined, root);
+  await install(packageManager, root);
   await template(root);
-  await reactWithVite(undefined, root);
+  await reactWithVite(packageManager, root);
 
   console.log(chalk.green("Project created!"));
 }
