@@ -33,8 +33,19 @@
     "glob": "^9.3.0"
   },
   "keywords": [
+    "FiveM",
+    "cfx.re",
     "framework",
     "fivem",
-    "typescript"
+    "typescript",
+    "gta",
+    "gtav",
+    "gta_v",
+    "gta_five",
+    "gta5",
+    "gtarp",
+    "nui",
+    "lib",
+    "library"
   ]
 }
