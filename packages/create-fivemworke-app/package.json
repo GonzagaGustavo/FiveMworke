@@ -1,6 +1,6 @@
 {
   "name": "create-fivemworke-app",
-  "version": "0.2.14",
+  "version": "0.2.15",
   "main": "index.js",
   "description": "Simple way to create a fivemworke project.",
   "author": "gustavogonzaga",

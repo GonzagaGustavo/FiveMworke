@@ -1,12 +1,6 @@
-# create-fivemworke-app
+# FiveMworke
 
-## Simple way to create a fivemworke project.
-
-<br />
-
-# What's fivemworke?
-
-Fivem is a typescript framework for develop fivem projects
+## The first FiveM TypeScript Framework
 
 # Why use fivemworke?
 
@@ -50,3 +44,8 @@ And the only thing you will need to do is restart the resources and see the chan
 This is my first open source lib that i'm creating, i don't understand much about open source projects but i'm studying about it, to improve the community and contributors.
 
 Any contribution such as bug reports, bug fixes and framework improvements are welcome and each pull request will be analyzed and if proposed improvements will be merged into the main branch and the new version of the package will be published
+
+- [x] System Files to generate fxmanifest.lua
+- [x] Compile ts to /resources
+- [x] React
+- [x] Gerar o fxmanifest.lua por ultimo e adionar uipage apenas se existir
