@@ -48,4 +48,4 @@ Any contribution such as bug reports, bug fixes and framework improvements are w
 - [x] System Files to generate fxmanifest.lua
 - [x] Compile ts to /resources
 - [x] React
-- [x] Gerar o fxmanifest.lua por ultimo e adionar uipage apenas se existir
+- [x] Generate fxmanifest.lua last and add page only if it exists
